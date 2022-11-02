@@ -7,6 +7,7 @@ import baconImg from './assets/bacon.png';
 import IngredientBtn from "./components/IngredientBtn/IngredientBtn";
 import {Ingredient} from "./types";
 import Price from "./components/Price/Price";
+import BurgerContent from "./components/BurgerContent/BurgerContent";
 
 
 const INGREDIENTS: Ingredient[] = [
@@ -18,7 +19,6 @@ const INGREDIENTS: Ingredient[] = [
 
 
 function App() {
-
 
 
   const [ingredients, setIngredients] = useState([
@@ -42,10 +42,9 @@ function App() {
       return elem.name === name && elem.count !== 0 ? {
         ...elem,
         count: elem.count - 1,
-      }: elem;
+      } : elem;
     }))
   }
-
 
 
   const getPrice = () => {
@@ -56,45 +55,52 @@ function App() {
     return total;
   };
 
-        return (
-          <div className="App">
-            <div className="ingredients">
 
-              {INGREDIENTS.map((element) => (
-                <IngredientBtn
-                  name={element.name}
-                  img={element.image}
-                  key={element.id}
-                  onBtnClick={() => changeCount(element.name)}
-                  count={ingredients[element.id].count}
-                  onDeleteBtnClick={() => {deleteCount(element.name)}}/>
-              ))}
+  const burgerComponentsClasses: string[] = [];
 
-
-
-            </div>
-
-            <div className="burger">
-              <div className="Burger">
-                <div className="BreadTop">
-                  <div className="Seeds1"></div>
-                  <div className="Seeds2"></div>
-                </div>
-
-
-                <div className="Salad"></div>
-                <div className="Cheese"></div>
-                <div className="Bacon"></div>
-                <div className="Meat"></div>
-                <div className="BreadBottom"></div>
-
-              </div>
-
-              <Price price={getPrice()}/>
-            </div>
-          </div>
-        );
+  for (let i = 0; i < ingredients.length; i++) {
+    for (let k = 0; k < ingredients[i].count; k++) {
+      burgerComponentsClasses.push(ingredients[i].name);
     }
+  }
+
+
+
+
+  return (
+    <div className="App">
+      <div className="ingredients">
+        {INGREDIENTS.map((element) => (
+          <IngredientBtn
+            name={element.name}
+            img={element.image}
+            key={element.id}
+            onBtnClick={() => changeCount(element.name)}
+            count={ingredients[element.id].count}
+            onDeleteBtnClick={() => {deleteCount(element.name)}}/>
+        ))}
+      </div>
+
+
+      <div className="burger">
+        <div className="Burger">
+          <div className="BreadTop">
+            <div className="Seeds1"></div>
+            <div className="Seeds2"></div>
+          </div>
+
+          {burgerComponentsClasses.map((element) => (
+          <BurgerContent burgerClass={element}/>
+            ))}
+
+          <div className="BreadBottom"></div>
+        </div>
+
+        <Price price={getPrice()}/>
+      </div>
+    </div>
+  );
+}
 
 
 export default App;
