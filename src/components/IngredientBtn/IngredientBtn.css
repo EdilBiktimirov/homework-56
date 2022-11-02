@@ -1,0 +1,15 @@
+.IngredientBtn {
+    min-width: 100px;
+    min-height: 100px;
+    display: inline-block;
+    margin: 0;
+}
+
+.IngredientBtnLabel {
+    display: inline-block;
+}
+
+.IngredientBox {
+    display: flex;
+    justify-content: space-between;
+}
