@@ -6,7 +6,6 @@ interface BurgerContentProps extends React.PropsWithChildren {
 }
 
 const BurgerContent: React.FC<BurgerContentProps> = (props) => {
-
   return (
     <div className={props.burgerClass}>
     </div>

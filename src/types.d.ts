@@ -2,5 +2,9 @@ export interface Ingredient {
   name: string;
   price: number;
   image: string;
-  id: number
+}
+
+export interface Ingredients {
+  name: string;
+  count: number;
 }

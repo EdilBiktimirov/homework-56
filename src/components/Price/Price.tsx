@@ -7,7 +7,7 @@ interface CountProps extends React.PropsWithChildren{
 const Price: React.FC<CountProps> = (props) => {
   return (
     <div>
-      <span>Price: {props.price}</span>
+      <span><b>Price:</b> {props.price}</span>
     </div>
   );
 };

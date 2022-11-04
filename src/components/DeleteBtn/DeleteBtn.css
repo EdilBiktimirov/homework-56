@@ -1,0 +1,6 @@
+.DeleteBtn {
+    width: 42px;
+    height: 42px;
+    background: url("../../assets/delete-ic.png") center no-repeat;
+    border: none;
+}

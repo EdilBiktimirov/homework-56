@@ -1,5 +1,5 @@
 import React from 'react';
-import './IngredientBtn.css';
+import './IngredientField.css';
 import DeleteBtn from "../DeleteBtn/DeleteBtn";
 
 interface IngredientProps extends React.PropsWithChildren {
@@ -10,7 +10,7 @@ interface IngredientProps extends React.PropsWithChildren {
   onDeleteBtnClick: () => void;
 }
 
-const IngredientBtn: React.FC<IngredientProps> = (props) => {
+const IngredientField: React.FC<IngredientProps> = (props) => {
 
   const btnStyle: React.CSSProperties = {
     background: 'url(' + props.img + ') center, no-repeat',
@@ -22,11 +22,10 @@ const IngredientBtn: React.FC<IngredientProps> = (props) => {
       <label className="IngredientBtnLabel">
         <button className="IngredientBtn" style={btnStyle} onClick={props.onBtnClick}></button>
         {props.name}</label>
-      <span>{props.count}</span>
-     
+      <span>х{props.count}</span>
       <DeleteBtn onBtnClick={props.onDeleteBtnClick}/>
     </div>
   );
 };
 
-export default IngredientBtn;
+export default IngredientField;
